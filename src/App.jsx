@@ -31,24 +31,31 @@ const PAGE_METADATA = {
 };
 
 export default function App() {
-  const getPageFromHash = () => {
-    const hash = window.location.hash.replace('#', '').toLowerCase();
-    if (['pricing', 'plans', 'praicing'].includes(hash)) return 'pricing';
-    if (['platform', 'features'].includes(hash)) return 'platform';
-    if (hash === 'about') return 'about';
-    if (hash === 'contact') return 'contact';
+  const getPageFromRoute = () => {
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+    const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+    const route = path || hash;
+
+    if (route.startsWith('pricing') || ['pricing', 'plans', 'praicing'].includes(hash)) return 'pricing';
+    if (route.startsWith('platform') || ['platform', 'features'].includes(hash)) return 'platform';
+    if (route.startsWith('about') || hash === 'about') return 'about';
+    if (route.startsWith('contact') || hash === 'contact') return 'contact';
     return 'home';
   };
 
-  const [currentPage, setCurrentPage] = useState(getPageFromHash);
+  const [currentPage, setCurrentPage] = useState(getPageFromRoute);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setCurrentPage(getPageFromHash());
+    const handleLocationChange = () => {
+      setCurrentPage(getPageFromRoute());
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    window.addEventListener('popstate', handleLocationChange);
+    return () => {
+      window.removeEventListener('hashchange', handleLocationChange);
+      window.removeEventListener('popstate', handleLocationChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -66,6 +73,12 @@ export default function App() {
   }, [currentPage]);
 
   const navigateTo = (page) => {
+    const targetPath = page === 'home' ? '/' : `/${page}`;
+    if (window.history && window.history.pushState) {
+      try {
+        window.history.pushState({}, '', targetPath);
+      } catch (_) {}
+    }
     window.location.hash = page === 'home' ? '' : page;
     setCurrentPage(page);
   };

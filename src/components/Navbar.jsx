@@ -47,35 +47,35 @@ export default function Navbar({ currentPage, navigateTo }) {
           aria-label="Main navigation"
         >
           <a 
-            href="#home"
+            href="/"
             className={currentPage === 'home' ? 'active' : ''}
             onClick={(e) => handleNavClick('home', e)}
           >
             Home
           </a>
           <a 
-            href="#platform"
+            href="/platform"
             className={currentPage === 'platform' ? 'active' : ''}
             onClick={(e) => handleNavClick('platform', e)}
           >
             Platform
           </a>
           <a 
-            href="#pricing"
+            href="/pricing"
             className={currentPage === 'pricing' ? 'active' : ''}
             onClick={(e) => handleNavClick('pricing', e)}
           >
             Pricing
           </a>
           <a 
-            href="#about"
+            href="/about"
             className={currentPage === 'about' ? 'active' : ''}
             onClick={(e) => handleNavClick('about', e)}
           >
             About
           </a>
           <a 
-            href="#contact"
+            href="/contact"
             className={currentPage === 'contact' ? 'active' : ''}
             onClick={(e) => handleNavClick('contact', e)}
           >
@@ -83,7 +83,7 @@ export default function Navbar({ currentPage, navigateTo }) {
           </a>
           <a 
             className="nav-button" 
-            href="#contact"
+            href="/contact"
             onClick={(e) => handleNavClick('contact', e)}
           >
             Get started

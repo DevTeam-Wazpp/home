@@ -22,10 +22,10 @@ export default function Footer({ navigateTo }) {
       <span>© 2026 Wazpp</span>
       
       <nav className="footer-links" aria-label="Footer navigation">
-        <a href="#platform" onClick={(e) => handleLink('platform', e)}>Platform</a>
-        <a href="#pricing" onClick={(e) => handleLink('pricing', e)}>Pricing</a>
-        <a href="#about" onClick={(e) => handleLink('about', e)}>About</a>
-        <a href="#contact" onClick={(e) => handleLink('contact', e)}>Contact</a>
+        <a href="/platform" onClick={(e) => handleLink('platform', e)}>Platform</a>
+        <a href="/pricing" onClick={(e) => handleLink('pricing', e)}>Pricing</a>
+        <a href="/about" onClick={(e) => handleLink('about', e)}>About</a>
+        <a href="/contact" onClick={(e) => handleLink('contact', e)}>Contact</a>
         <a 
           href="https://www.instagram.com/wazpp_/" 
           target="_blank" 

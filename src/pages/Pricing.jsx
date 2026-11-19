@@ -224,25 +224,82 @@ export default function Pricing({ navigateTo }) {
 
   return (
     <main>
-      {/* Pricing Hero */}
-      <section className="shell page-hero" style={{ textAlign: 'center' }}>
-        <div className="eyebrow-badge" style={{ margin: '0 auto 20px' }}>
-          <span className="badge-dot" />
-          <span>Transparent Pricing</span>
-          {apiOnline && (
-            <span style={{ fontSize: '0.68rem', opacity: 0.85, marginLeft: 4, color: 'var(--green)' }}>
-              • Live Synced
-            </span>
-          )}
+      {/* Hero Section - Matching Home Design */}
+      <section className="shell hero" aria-labelledby="pricing-hero-title">
+        <div>
+          <div className="eyebrow-badge">
+            <span className="badge-dot" />
+            <span>Transparent Pricing &amp; Plans</span>
+            {apiOnline && (
+              <span style={{ fontSize: '0.68rem', opacity: 0.9, marginLeft: 4, color: 'var(--green)' }}>
+                • Live Synced
+              </span>
+            )}
+          </div>
+
+          <h1 id="pricing-hero-title">
+            Plans @Waz<span className="hero-title-accent">p</span>p to grow.
+          </h1>
+
+          <p className="intro">
+            Simple, honest pricing to scale your business with WhatsApp automation. No hidden setup fees. Multi-agent shared inbox, visual flow builder, and intelligent bots included.
+          </p>
+
+          <div className="actions">
+            <button 
+              className="button primary" 
+              onClick={() => {
+                const el = document.getElementById('plans-grid-section');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              type="button"
+            >
+              Choose your plan
+              <ArrowRight size={15} />
+            </button>
+            <button 
+              className="button secondary" 
+              onClick={() => navigateTo('contact')}
+              type="button"
+            >
+              Talk to sales
+            </button>
+          </div>
         </div>
 
-        <h1 style={{ maxWidth: '800px', margin: '0 auto 16px' }}>
-          Simple plans that grow with your business.
-        </h1>
+        <div className="orbital" aria-label="Wazpp pricing and plans">
+          <div className="orbital-ring one" />
+          <div className="orbital-ring two" />
+          <span className="spark one" />
+          <span className="spark two" />
+          
+          <div className="core">
+            <div>
+              <div className="hero-logo-mark">
+                <img src="/web-logo.png" alt="Wazpp" />
+              </div>
+              <small>Plans that grow with you</small>
+            </div>
+          </div>
 
-        <p className="intro" style={{ maxWidth: '640px', margin: '0 auto 36px' }}>
-          No hidden setup fees. Experience modern WhatsApp automation with shared inbox, visual flow builders, and automated intelligence.
-        </p>
+          <div className="floating-pill">
+            <span className="pulse-dot-online" />
+            <span>{apiOnline ? 'Live Engine Synced' : 'Official WhatsApp API'}</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Header & Cycle Selector */}
+      <section className="section shell" id="plans-grid-section" style={{ paddingTop: 0 }}>
+        <div className="section-head" style={{ marginBottom: 32 }}>
+          <div>
+            <div className="eyebrow">Flexible Inclusions</div>
+            <h2>Pick the plan that fits your growth.</h2>
+          </div>
+          <p>
+            Upgrade or switch cycles at any time. All plans connect directly to Meta WhatsApp Cloud API with zero markup.
+          </p>
+        </div>
 
         {/* Billing Cycle Selector */}
         {availableCycles.length > 1 && (
@@ -264,10 +321,7 @@ export default function Pricing({ navigateTo }) {
             </div>
           </div>
         )}
-      </section>
 
-      {/* Pricing Cards Grid */}
-      <section className="section shell" style={{ paddingTop: 10 }}>
         {loading && (
           <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--muted)' }}>
             <div className="loading-spinner" />
