@@ -61,6 +61,13 @@ export default function Navbar({ currentPage, navigateTo }) {
             Platform
           </a>
           <a 
+            href="#pricing"
+            className={currentPage === 'pricing' ? 'active' : ''}
+            onClick={(e) => handleNavClick('pricing', e)}
+          >
+            Pricing
+          </a>
+          <a 
             href="#about"
             className={currentPage === 'about' ? 'active' : ''}
             onClick={(e) => handleNavClick('about', e)}

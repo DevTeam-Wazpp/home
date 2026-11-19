@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Platform from './pages/Platform';
+import Pricing from './pages/Pricing';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
@@ -14,6 +15,10 @@ const PAGE_METADATA = {
   platform: {
     title: 'Platform | Wazpp - Tools for the Whole Journey',
     description: 'Explore the Wazpp WhatsApp automation platform for smarter customer communication.'
+  },
+  pricing: {
+    title: 'Pricing & Plans | Wazpp - Chat to Grow',
+    description: 'Explore Wazpp WhatsApp automation pricing and plans. Transparent, flexible pricing for teams of all sizes.'
   },
   about: {
     title: 'About Wazpp | Chat to Grow',
@@ -28,6 +33,7 @@ const PAGE_METADATA = {
 export default function App() {
   const getPageFromHash = () => {
     const hash = window.location.hash.replace('#', '').toLowerCase();
+    if (['pricing', 'plans', 'praicing'].includes(hash)) return 'pricing';
     if (['platform', 'features'].includes(hash)) return 'platform';
     if (hash === 'about') return 'about';
     if (hash === 'contact') return 'contact';
@@ -70,6 +76,7 @@ export default function App() {
       
       {currentPage === 'home' && <Home navigateTo={navigateTo} />}
       {currentPage === 'platform' && <Platform navigateTo={navigateTo} />}
+      {currentPage === 'pricing' && <Pricing navigateTo={navigateTo} />}
       {currentPage === 'about' && <About navigateTo={navigateTo} />}
       {currentPage === 'contact' && <Contact navigateTo={navigateTo} />}
 

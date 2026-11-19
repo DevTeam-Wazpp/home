@@ -24,10 +24,10 @@ export default function Home({ navigateTo }) {
           <div className="actions">
             <button 
               className="button primary" 
-              onClick={() => navigateTo('contact')}
+              onClick={() => navigateTo('pricing')}
               type="button"
             >
-              Get started
+              View Plans &amp; Pricing
               <ArrowRight size={15} />
             </button>
             <button 
